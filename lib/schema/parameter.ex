@@ -83,6 +83,7 @@ defmodule Swagger.Schema.Parameter do
 
     use Swagger.Access
 
+    def from_schema(%{"schema" => schema}), do: from_schema(schema)
     def from_schema(%{"type" => type} = schema) when type in ["number", "integer"] do
       %__MODULE__{type: String.to_atom(type)}
       |> Map.put(:format, schema["format"])
